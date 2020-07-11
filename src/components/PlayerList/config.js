@@ -1,0 +1,1 @@
+export const playModeConfig = ['列表循环', '顺序播放', '随机播放', '播放列表']

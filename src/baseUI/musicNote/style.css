@@ -1,0 +1,36 @@
+.music-note {
+    position         : fixed;
+    margin-left      : -1rem;
+    margin-top       : -.6rem;
+    font-weight      : 700;
+    animation        : fall 3s ease-in forwards;
+    -webkit-animation: fall 3s ease-in forwards;
+}
+
+@keyframes fall {
+    20% {
+        transform: translate(-1.4rem, -1rem) rotate(180deg);
+        -webkit-transform: translate(-1.4rem, -1rem) rotate(180deg);
+        -moz-transform: translate(-1.4rem, -1rem) rotate(180deg);
+        -ms-transform: translate(-1.4rem, -1rem) rotate(180deg);
+        -o-transform: translate(-1.4rem, -1rem) rotate(180deg);
+        opacity: .5;
+}
+
+    30% {
+        transform: translate(-1.4rem, -1rem) rotate(180deg);
+        -webkit-transform: translate(-1.4rem, -1rem) rotate(180deg);
+        -moz-transform: translate(-1.4rem, -1rem) rotate(180deg);
+        -ms-transform: translate(-1.4rem, -1rem) rotate(180deg);
+        -o-transform: translate(-1.4rem, -1rem) rotate(180deg);
+        opacity: .5;
+}
+
+    to {
+        transform        : translateY(100vh);
+        -webkit-transform: translateY(100vh);
+        -moz-transform   : translateY(100vh);
+        -ms-transform    : translateY(100vh);
+        -o-transform     : translateY(100vh);
+    }
+}
