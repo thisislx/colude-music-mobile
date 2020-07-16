@@ -1,3 +1,7 @@
+![首页](md-imgs/m首页.gif)
+![歌手](md-imgs/m歌手.gif)
+![播放器](md-imgs/m播放器.gif)
+---
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
