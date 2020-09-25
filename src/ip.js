@@ -1,1 +1,2 @@
-module.exports = 'http://1.1.1.107:7890'
+module.exports = ''
+// module.exports = 'http://localhost:7890'

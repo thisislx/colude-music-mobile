@@ -1,8 +1,7 @@
 import React, { lazy, Suspense } from 'react'
 import { Redirect } from 'react-router-dom'
-
+import Home from '../application/Home'
 const
-    Home = lazy(() => import('../application/Home')),
     Recommend = lazy(() => import('../application/Recommend')),
     Rank = lazy(() => import('../application/Rank')),
     Singers = lazy(() => import('../application/Singers')),
@@ -12,18 +11,10 @@ const
     Search = lazy(() => import('../application/Search')),
     SearchResult = lazy(() => import('../application/SearchResult'))
 
-const MyComponent = Component => props => {
-    return (
-        <Suspense fallback={null}>
-            <Component {...props} />
-        </Suspense>
-    )
-}
-
 const routesConfig = [
     {
         path: '/',
-        component: MyComponent(Home),
+        component: Home,
         routes: [
             {
                 path: '/',
@@ -78,9 +69,13 @@ const routesConfig = [
                         component: SearchResult
                     }
                 ]
+            }, {
+                render() {
+                    return <Redirect to='/recommend' />
+                }
             }
         ]
-    },
+    }
 ]
 
 

@@ -1,9 +1,9 @@
-import React, { useCallback, memo } from 'react'
+import React, { useCallback, memo, useEffect, Suspense } from 'react'
 import { navListConfig } from './config'
 import { renderRoutes } from 'react-router-config'
 import { Wrap, Header, Tab, TabItem } from './style'
 import { NavLink } from 'react-router-dom'
-import Player from '../Player'
+import Masker from '../../baseUI/Masker'
 
 function Home(props) {
     const
@@ -11,13 +11,11 @@ function Home(props) {
         enterDetail = useCallback(() => {
             history.push('/search')
         }, [history])
-        
     return (
         <Wrap>
             <Header>
                 <span className="iconfont">&#xe8af;</span>
-                <span>晕音乐</span>
-
+                <span>月之声</span>
                 <span
                     className="iconfont"
                     onClick={e => enterDetail()}
@@ -26,24 +24,27 @@ function Home(props) {
                 </span>
             </Header>
 
-            <Tab>
-                {
-                    navListConfig.map(item => (
-                        <TabItem key={item.to}>
-                            <NavLink
-                                activeClassName={item.active}
-                                to={item.to}
-                            >
-                                <div className='click-area'>{item.title}</div>
-                            </NavLink>
-                        </TabItem>
-                    ))
-                }
-            </Tab>
-            
-            {renderRoutes(routes)}
+            <Suspense fallback={<Masker />}>
+                <Tab>
+                    {
+                        navListConfig.map(item => (
+                            <TabItem key={item.to}>
+                                <NavLink
+                                    activeClassName={item.active}
+                                    to={item.to}
+                                >
+                                    <div className='click-area'>{item.title}</div>
+                                </NavLink>
+                            </TabItem>
+                        ))
+                    }
+                </Tab>
+                {renderRoutes(routes)}
+            </Suspense>
 
-            <Player />
+
+
+
         </Wrap>
     )
 }

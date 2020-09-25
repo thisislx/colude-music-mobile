@@ -29,7 +29,7 @@ const
 
 export default {
     'max-width': '40rem',
-    'theme-color': '#d44439',
+    'theme-color': '#0a3d62',
     'theme-back-color': 'hsla(0, 0%, 97%, 1)',
     'theme-back-color-v2': 'hsla(0, 0%, 90%, 1)',
     'font-color-light': 'hsla(0,0%,100%,.7)',

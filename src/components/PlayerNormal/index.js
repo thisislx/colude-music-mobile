@@ -9,7 +9,6 @@ import { Lyric } from '../../application/Player/modules'
 import { Wrap, Container, Header, HeaderLeft, CD_Wrap, CD_Nav, Control, LyricWrap } from './style'
 import FrostGlass from '../../baseUI/FrostGlass'
 import ProgressBar from '../../baseUI/ProgressBar'
-import cdBack_img from '../../assets/imgs/cd-back.jpg'
 import Scroll from '../Scroll'
 
 // 移动进度条前的playing状态, 移动时暂停音乐
@@ -107,7 +106,7 @@ const PlayerNormal = function (props) {
 
         switch (true) {
             // 不存在歌词
-            case !(id in lyricList):
+            case lyricList[id] == null || typeof lyricList[id] !== 'object' :
                 setLyric('等待好心人上传歌词')
                 setLyricProvider(null)
                 break
@@ -117,7 +116,7 @@ const PlayerNormal = function (props) {
                 setLyricProvider(null)
                 break
 
-            case 'lrc' in lyricList[id] && 'tlyric' in lyricList[id]:
+            case lyricList[id].lrc && lyricList[id].tlyric:
                 existHandle()
                 break
 
@@ -179,7 +178,7 @@ const PlayerNormal = function (props) {
 
     return (
         <Wrap>
-            <FrostGlass img={cdBack_img}>
+            <FrostGlass >
                 <Container>
                     <Header>
                         <HeaderLeft>

@@ -17,6 +17,12 @@ const Scroll = forwardRef((props, ref) => {
         onPullUp_de = useCallback(debounce(onPullUp, 100), [onPullUp]),
         onPullDown_de = useCallback(debounce(onPullDown, 100), [onPullDown])
 
+    if (refresh && bScroll) {
+        requestAnimationFrame(() => {
+            bScroll.refresh()
+        })
+    }
+
     useImperativeHandle(ref, () => {
         return {
             refresh() {
@@ -66,14 +72,8 @@ const Scroll = forwardRef((props, ref) => {
         }
     }, [scrollContaninerRef, direction, click, bounceTop, bounceBottom])
 
+
     // 每次刷新
-    useEffect(() => {
-        if (refresh && bScroll) {
-            setTimeout(() => {
-                bScroll.refresh()
-            })
-        }
-    }, [refresh, bScroll])
 
     useEffect(() => {
         if (!bScroll || !onScroll) return;

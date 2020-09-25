@@ -21,17 +21,16 @@ function RecommendList(props) {
                 }, 500)
             }
         }, [history])
-
+    
     return (
         <Container>
             <h3>推荐歌单</h3>
             <List >
                 {
-                    list.map(item => (
+                    list.map((item, index) => index ? (
                         <ListItem key={item.id} onClick={e => onEnterAlbum(item.id)}>
                             <div className='img-wrap'>
                                 <div className='decorate'></div>
-
                                 <p className='listen-count'>
                                     {getTenThousand(item.playCount)}
                                 </p>
@@ -47,7 +46,7 @@ function RecommendList(props) {
 
                             <footer _id={item.id}>{item.name}</footer>
                         </ListItem>
-                    ))
+                    ): null)
                 }
             </List>
         </Container>

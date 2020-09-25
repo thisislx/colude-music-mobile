@@ -16,13 +16,13 @@ function Recommend(props) {
         { route: { routes } } = props,
         { bannerList, recommendList, loaded } = props,
         { getBannerList, getRecommendList } = props
-
     useEffect(() => {
         if (!loaded) {
             getBannerList()
             getRecommendList()
         }
     }, [loaded, getBannerList, getRecommendList])
+
     const
         bannerList_JS = bannerList.toJS() || [],
         recommendList_JS = recommendList.toJS() || [];
@@ -30,15 +30,14 @@ function Recommend(props) {
     return (
         <HomeUnderWrap>
             {renderRoutes(routes)}
-
             {
                 loaded ? (
-                    <Scroll onScroll={e =>forceCheck()}>
-                        <div>
+                    <Scroll onScroll={e => forceCheck()}>
+                        <main>
                             <Mask />
                             <Slide list={bannerList_JS} />
                             <RecommendList list={recommendList_JS} />
-                        </div>
+                        </main>
                     </Scroll>
                 ) : <Toast icon={true} mes={'加载中...'} />
             }
